@@ -22,7 +22,8 @@ export default {
       totall = { id: nanoid(), name: text.target.value, donn: false }
       //   this.list.unshift(totall)
       //   totall = JSON.stringify(totall)
-      this.totalld(totall)
+      // this.totalld(totall)
+      this.$emit('totalld', totall)
       text.target.value = ''
     },
   },

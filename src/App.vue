@@ -2,11 +2,11 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <!-- 头部输入框 -->
-    <haed-vue :totalld="totalld"></haed-vue>
+    <haed-vue @totalld="totalld"></haed-vue>
     <div class="商品" style="text-align: left">
       <stcion-Vue v-for="item in tablist" :key="item.id" :titels="item" :shnchu="shnchu" :adds="adds" />
     </div>
-    <foorter-Vue :tablist="tablist" :cikck="cikck" :chesc="chesc"></foorter-Vue>
+    <foorter-Vue :tablist="tablist" @cikck="cikck" @chesc="chesc"></foorter-Vue>
   </div>
 </template>
 

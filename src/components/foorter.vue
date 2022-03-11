@@ -28,14 +28,16 @@ export default {
       },
       set(vaue) {
         console.log(vaue)
-        this.cikck(vaue)
+        // this.cikck(vaue)
+        this.$emit('cikck', vaue)
       },
     },
   },
   methods: {
     // checkall(eve) {},
     sc() {
-      this.chesc()
+      // this.chesc()
+      this.$emit('chesc')
       alert('删除成功')
     },
   },
