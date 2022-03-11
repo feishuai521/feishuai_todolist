@@ -35,8 +35,8 @@ export default {
   methods: {
     // checkall(eve) {},
     sc() {
-      alert(666)
       this.chesc()
+      alert('删除成功')
     },
   },
 }
