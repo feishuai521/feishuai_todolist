@@ -39,7 +39,12 @@ export default {
     // margin: 0 10px;
     text-align: center;
     border: 1px solid #9b59b6;
+
     outline-style: none;
+    &:active,
+    &:focus {
+      box-shadow: 2px -1px 20px 0px #9b59b6;
+    }
   }
 }
 </style>
