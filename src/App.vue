@@ -16,11 +16,7 @@ import haedVue from './components/haed.vue'
 import stcionVue from './components/stcion.vue'
 // stcionVue
 // import HelloWorld from './components/HelloWorld.vue'
-const tablist = [
-  { id: 1, name: '抽烟', donn: true },
-  { id: 2, name: '喝酒', donn: false },
-  { id: 3, name: '开车', donn: false },
-]
+const tablist = JSON.parse(window.localStorage.getItem('tablist')) || []
 export default {
   name: 'App',
   components: {
@@ -61,6 +57,14 @@ export default {
       this.tablist = this.tablist.filter(res => {
         return !res.donn
       })
+    },
+  },
+  watch: {
+    tablist: {
+      deep: true,
+      handler(value) {
+        window.localStorage.setItem('tablist', JSON.stringify(value))
+      },
     },
   },
 }
