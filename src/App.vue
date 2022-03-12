@@ -67,6 +67,14 @@ export default {
       },
     },
   },
+  mounted() {
+    this.$bus.$on('adds', this.adds)
+    this.$bus.$on('shnchu', this.shnchu)
+  },
+  beforeDestroy() {
+    this.$bus.$off('adds')
+    this.$bus.$off('shnchu')
+  },
 }
 </script>
 

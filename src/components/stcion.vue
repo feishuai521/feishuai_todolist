@@ -17,12 +17,12 @@ export default {
       type: Object,
       //   default: { id: 1, name: '抽烟', donn: true },
     },
-    shnchu: {
-      type: Function,
-    },
-    adds: {
-      type: Function,
-    },
+    // shnchu: {
+    //   type: Function,
+    // },
+    // adds: {
+    //   type: Function,
+    // },
     // dn: {
     //   type: Boolean,
     //   default: false,
@@ -38,12 +38,14 @@ export default {
   },
   methods: {
     add(x) {
-      this.adds(x)
+      // this.adds(x)
+      this.$bus.$emit('adds', x)
     },
     remo(id) {
       //   console.log(id)
       if (confirm('需要删除吗？')) {
-        this.shnchu(id)
+        // this.shnchu(id)
+        this.$bus.$emit('shnchu', id)
       }
     },
   },
