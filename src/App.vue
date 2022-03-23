@@ -14,7 +14,9 @@
 import foorterVue from './components/foorter.vue'
 import haedVue from './components/haed.vue'
 import stcionVue from './components/stcion.vue'
+// import { data } from './Mock/index'
 // stcionVue
+// console.log(data)
 // import HelloWorld from './components/HelloWorld.vue'
 const tablist = JSON.parse(window.localStorage.getItem('tablist')) || []
 export default {
