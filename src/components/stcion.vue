@@ -1,10 +1,22 @@
+<!--
+ * @Author: 飞帅
+ * @Date: 2022-03-10 20:53:36
+ * @LastEditTime: 2022-03-24 20:01:23
+ * @LastEditors: feishuai
+ * @Description: blog.feishuai521.cn`
+ * The copyright belongs to Fei Shuai
+-->
 <template>
   <div class="stcion">
     <div>
-      <div><input type="checkbox" :checked="titels.donn" @change="add(titels.id)" />{{ titels.name }}</div>
+      <div>
+        <input type="checkbox" :checked="titels.donn" @change="add(titels.id)" />
+        <span v-show="!titels.istrue">{{ titels.name }}</span>
+        <input type="text" :value="titels.name" v-show="titels.istrue" @blur="hangbur(titels, $event)" ref="inputtext" />
+      </div>
       <!-- <div><input type="checkbox" v-model="titels.donn" />{{ titels.name }}</div> -->
-
       <div class="删除" @click="remo(titels.id)"><span>删除</span></div>
+      <div v-show="!titels.istrue" class="删除 编辑" @click="hanglder(titels)"><span>编辑</span></div>
     </div>
   </div>
 </template>
@@ -17,22 +29,9 @@ export default {
       type: Object,
       //   default: { id: 1, name: '抽烟', donn: true },
     },
-    // shnchu: {
-    //   type: Function,
-    // },
-    // adds: {
-    //   type: Function,
-    // },
-    // dn: {
-    //   type: Boolean,
-    //   default: false,
+
     // },
   },
-  //   data() {
-  //     return {
-  //       text: this.titels,
-  //     }
-  //   },
   created() {
     //   this.
   },
@@ -47,6 +46,23 @@ export default {
         // this.shnchu(id)
         this.$bus.$emit('shnchu', id)
       }
+    },
+    hanglder(titel) {
+      // console.log(titel)
+      // this.titels.istrue = true
+      if (Object.prototype.hasOwnProperty.call(titel, 'istrue')) {
+        titel.istrue = true
+      } else {
+        this.$set(titel, 'istrue', true)
+      }
+      //异步获取input里的焦点
+      this.$nextTick(() => this.$refs.inputtext.focus())
+      // setTimeout(() => this.$refs.inputtext.focus(), 200)
+    },
+    hangbur(todo, e) {
+      todo.istrue = false
+      // console.log('updateTodo', todo.id, e.target.value)
+      !e.target.value.trim() ? alert('输入不要是空') : this.$bus.$emit('updateTodo', todo.id, e.target.value)
     },
   },
 }
@@ -93,6 +109,9 @@ export default {
       margin: 0px 20px;
       color: #fff;
     }
+  }
+  .编辑 {
+    background-color: #999;
   }
 }
 </style>

@@ -50,6 +50,13 @@ export default {
       })
       //   this.titels = this.text
     },
+    updateTodo(x, a) {
+      // console.log(x)
+      this.tablist.forEach(res => {
+        if (res.id === x) res.name = a
+      })
+      //   this.titels = this.text
+    },
     cikck(res) {
       this.tablist.forEach(ress => {
         ress.donn = res
@@ -60,6 +67,7 @@ export default {
         return !res.donn
       })
     },
+    // updateTodo() {},
   },
   watch: {
     tablist: {
@@ -71,10 +79,12 @@ export default {
   },
   mounted() {
     this.$bus.$on('adds', this.adds)
+    this.$bus.$on('updateTodo', this.updateTodo)
     this.$bus.$on('shnchu', this.shnchu)
   },
   beforeDestroy() {
     this.$bus.$off('adds')
+    this.$bus.$off('updateTodo')
     this.$bus.$off('shnchu')
   },
 }
