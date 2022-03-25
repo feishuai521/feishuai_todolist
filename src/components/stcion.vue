@@ -1,24 +1,28 @@
 <!--
  * @Author: 飞帅
  * @Date: 2022-03-10 20:53:36
- * @LastEditTime: 2022-03-24 20:01:23
+ * @LastEditTime: 2022-03-25 10:19:21
  * @LastEditors: feishuai
  * @Description: blog.feishuai521.cn`
  * The copyright belongs to Fei Shuai
 -->
 <template>
-  <div class="stcion">
-    <div>
+  <transition name="todo" appear>
+    <div class="stcion">
       <div>
-        <input type="checkbox" :checked="titels.donn" @change="add(titels.id)" />
-        <span v-show="!titels.istrue">{{ titels.name }}</span>
-        <input type="text" :value="titels.name" v-show="titels.istrue" @blur="hangbur(titels, $event)" ref="inputtext" />
+        <!-- <transition> -->
+        <div>
+          <input type="checkbox" :checked="titels.donn" @change="add(titels.id)" />
+          <span v-show="!titels.istrue">{{ titels.name }}</span>
+          <input type="text" :value="titels.name" v-show="titels.istrue" @blur="hangbur(titels, $event)" ref="inputtext" />
+        </div>
+        <!-- </transition> -->
+        <!-- <div><input type="checkbox" v-model="titels.donn" />{{ titels.name }}</div> -->
+        <div class="删除" @click="remo(titels.id)"><span>删除</span></div>
+        <div v-show="!titels.istrue" class="删除 编辑" @click="hanglder(titels)"><span>编辑</span></div>
       </div>
-      <!-- <div><input type="checkbox" v-model="titels.donn" />{{ titels.name }}</div> -->
-      <div class="删除" @click="remo(titels.id)"><span>删除</span></div>
-      <div v-show="!titels.istrue" class="删除 编辑" @click="hanglder(titels)"><span>编辑</span></div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -112,6 +116,20 @@ export default {
   }
   .编辑 {
     background-color: #999;
+  }
+}
+.todo-enter-active {
+  animation: autg 0.5s linear;
+}
+.todo-leave-active {
+  animation: autg 0.5s linear reverse;
+}
+@keyframes autg {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
 </style>
