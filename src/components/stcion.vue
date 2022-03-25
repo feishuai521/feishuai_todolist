@@ -1,13 +1,18 @@
 <!--
  * @Author: 飞帅
  * @Date: 2022-03-10 20:53:36
- * @LastEditTime: 2022-03-25 10:19:21
+ * @LastEditTime: 2022-03-25 11:02:23
  * @LastEditors: feishuai
  * @Description: blog.feishuai521.cn`
  * The copyright belongs to Fei Shuai
 -->
 <template>
-  <transition name="todo" appear>
+  <transition
+    name="animate__animated animate__bounce"
+    appear
+    enter-active-class="animate__lightSpeedInLeft"
+    leave-active-class="animate__bounceOutLeft"
+  >
     <div class="stcion">
       <div>
         <!-- <transition> -->
@@ -118,18 +123,18 @@ export default {
     background-color: #999;
   }
 }
-.todo-enter-active {
-  animation: autg 0.5s linear;
-}
-.todo-leave-active {
-  animation: autg 0.5s linear reverse;
-}
-@keyframes autg {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
+// .todo-enter-active {
+//   animation: autg 0.5s linear;
+// }
+// .todo-leave-active {
+//   animation: autg 0.5s linear reverse;
+// }
+// @keyframes autg {
+//   from {
+//     transform: translateX(-100%);
+//   }
+//   to {
+//     transform: translateX(0px);
+//   }
+// }
 </style>
